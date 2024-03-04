@@ -59,7 +59,8 @@ export default function Form({ apiKey, defaultImage }) {
     <form className="flex flex-wrap justify-center gap-4" onSubmit={onSubmit}>
       <label
         htmlFor="dropzone-file"
-        className="flex flex-col flex-grow items-center justify-center border-2 border-gray-300 border-dashed rounded-lg cursor-pointer hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-800/20"
+        disabled={loading}
+        className="flex flex-col flex-grow items-center justify-center border-2 border-gray-300 border-dashed rounded-lg cursor-pointer hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-800/20 disabled:animate-pulse"
       >
         <div className="flex flex-col items-center justify-center pt-5 pb-6">
           <svg
@@ -89,6 +90,7 @@ export default function Form({ apiKey, defaultImage }) {
         <input
           {...getRootProps()}
           {...getInputProps()}
+          disabled={loading}
           id="dropzone-file"
           type="file"
           accept="image/*"
@@ -97,7 +99,7 @@ export default function Form({ apiKey, defaultImage }) {
       </label>
 
       <picture
-        className={`sm:w-1/4 relative aspect-square rounded-lg overflow-hidden  ${
+        className={`sm:w-1/4 aspect-square rounded-lg overflow-hidden size-full ${
           loading && "animate-pulse"
         }`}
       >

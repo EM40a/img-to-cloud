@@ -38,8 +38,10 @@ const image =
     <meta name="twitter:image" content={image} />
   </head>
   <body>
-    <Navbar />
-    <slot />
+    <div class="w-11/12 max-w-screen-md mx-auto space-y-8">
+      <Navbar />
+      <slot />
+    </div>
   </body>
 
   <style is:global>
@@ -49,7 +51,12 @@ const image =
 
     :root {
       color-scheme: dark light;
-      scroll-behavior: smooth;
+    }
+
+    @media reduce(motion) {
+      * {
+        @apply animate-none;
+      }
     }
 
     body {
