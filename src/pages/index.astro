@@ -1,0 +1,30 @@
+---
+import { Toaster } from "react-hot-toast";
+import Form from "../components/Form";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Upload, share and manage your photos in the cloud"
+  description="In this project, we will be using the cloudinary API to upload images to the cloud. We will also be using the loading.io website to create a loading spinner for the upload button."
+>
+  <main class="w-11/12 max-w-screen-md mx-auto my-20">
+    <Toaster client:load position="top-right" reverseOrder={false} />
+
+    <h1 class="text-4xl mb-10 md:mb-20 text-pretty text-center">
+      Upload your images to the <strong>cloud</strong>
+    </h1>
+
+    <Form
+      apiKey={import.meta.env.API_SECRET}
+      defaultImage="https://res.cloudinary.com/dgs55s8qh/image/upload/v1709497738/jquanpudjh2k8w6zveem.jpg"
+      client:only
+    />
+  </main>
+</Layout>
+
+<style is:global>
+  strong {
+    @apply text-blue-500 dark:text-blue-300;
+  }
+</style>
