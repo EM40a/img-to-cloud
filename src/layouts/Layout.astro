@@ -1,4 +1,6 @@
 ---
+import Navbar from "../components/Navbar.astro";
+
 interface Props {
   title: string;
   description: string;
@@ -36,14 +38,22 @@ const image =
     <meta name="twitter:image" content={image} />
   </head>
   <body>
+    <Navbar client:load />
     <slot />
   </body>
+
   <style is:global>
+    @tailwind base;
+    @tailwind components;
     @tailwind utilities;
 
     :root {
       color-scheme: dark light;
       scroll-behavior: smooth;
+    }
+
+    body {
+      @apply bg-white dark:bg-dark text-dark dark:text-white;
     }
   </style>
 </html>
